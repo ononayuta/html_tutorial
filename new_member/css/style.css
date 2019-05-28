@@ -1,0 +1,71 @@
+@import url(sanitize.css);
+
+body {
+    background-color: #fafafa;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+p {
+    font-size: 14px;
+}
+
+.content {
+    /* 背景の色 */
+    background-color: #fff;
+    /* divの箱の中の幅 */
+    width: 600px;
+    /* 要素contentの外側の余白、余白の指定方法は多々あり */
+    margin: 10px auto;
+    /* 要素の外側の線のことだね。solidが線の種類。borderにも下線部など種類がある */
+    border: 1px solid #d1d1d1;
+    /* 内側の余白 */
+    padding: 30px;
+}
+
+input {
+    /* ラインを一度消す */
+    border: 0;
+    /* 下線部だけ追加する */
+    border-bottom: 1px solid #d1d1d1;
+    /* 親の要素のcontentのwidthに合わた％で指定 */
+    width: 100%;
+    /* 文字の大きさの相対的な比率。その画面のベースとなるフォントサイズの1.2倍 */
+    font-size: 1.2em;
+    /* テキストボックスの中の余白 */
+    padding: 8px;
+}
+
+button {
+    width: 100%;
+    background-color: #2096f3;
+    /* 要素の文字の色 */
+    color: #fff;
+    border: 0;
+    padding: 15px;
+    /* ボタンの枠（角）を丸くしている */
+    border-radius: 3px;
+    /* 影つける（影の位置　影の位置　影の濃さ　影の色（色　色　色　透過度）） */
+    box-shadow: 0 0 8px rgba(0, 0, 0, .4);
+}
+
+.control {
+    margin-bottom: 3em;
+}
+
+label {
+    /* インライン要素をブロックレベル要素に変更する。入力欄との余白を取りたいから。ブロック要素じゃないと使えないから */
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.required {
+    color: #f33;
+    font-size: 0.9em;
+    background-color: #fee;
+    padding: 3px;
+    font-weight: bold;
+}
