@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <title>My photos jquery</title>
+</head>
+<body>
+  <header>
+    <h1>My photos jquery</h1>
+  </header>
+  <div class="container">
+    <div id="img_unit"></div>
+
+  </div>
+  <script>
+ //   console.log($("#img_unit"));
+
+//ファイルを取ってきてね、下のコメントアウトした内容が省略形で×
+    $.getJSON("https://h2o-space.com/htmlbook/images.php",
+//     var ajax = new XMLHttpRequest();
+//     ajax.open("GET","https://h2o-space.com/htmlbook/images.php");
+//     ajax.responseType = "json";
+//     ajax.send(null);
+//     ajax.onreadystatechange = function () {
+//       if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+
+//getJSONで取得したデータがdataに入っている
+      function(data) {
+
+        for(var i = 0; i < data.length; i++) {
+//タグを作る
+          $("<div class='photo'></div>")
+
+            .append("<img src ='" + data[i].path + "'>")
+            .append("<div class='inner'><p>" + data[i].caption + "<span>" +
+              data[i].nema + "</span></p></div>")
+  //どこにがここで指定される！
+            .appendTo("#img_unit");
+        }
+      });
+  </script>
+</body>
+</html>
