@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>timer</title>
+    <title>timer jquery</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style..css">
+    <script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -21,61 +22,82 @@
        </div>
     </div>
     <script>
-      var addZero = function(val) {
-        if (val < 10) {
-          val = "0" + val;
-        }
-        return val;
-      }
-
+      // console.log($("#start_stop"));
+      // var ajax = new XMLHttpRequest();
+      var now = new Date();
       var start;
       var timer_id;
 
-      document.getElementById("start_stop").addEventListener(
-        "click",
-        function() {
-          start  = new Date();
-
-          if(this.innerHTML === "START") {
-            timer_id = setInterval(goTimer, 10);
-            this.innerHTML = ("STOP")
-            this.classList.remove("btn-primary")
-            this.classList.add("btn-danger")
-          } else {
-            clearInterval(timer_id);
-            this.innerHTML = ("START")
-            this.classList.remove("btn-danger");
-            this.classList.add("btn-primary")
-          }
-        });
-
-        var goTimer = function() {
-          var now =new Date();
-          var milli = now.getTime() - start.getTime();
-          var seconds = Math.floor(milli / 1000);
-          var minutes = Math.floor(seconds / 60);
-          var hours = Math.floor(minutes / 60);
-          seconds = seconds -minutes * 60;
-          minutes = minutes - hours * 60;
-          document.getElementById("timer").innerHTML = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
-        } ;
+      $(function() {
+      $("#timer").text(now.getFullYear() + ":" + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds());
+      });
 
 
-          // var seconds = now.getSeconds();
-          // seconds = addZero(seconds);
-          // // if (seconds < 10) {
-          // //   seconds = "0" + seconds;
-          // // }
-          // var minutes = now.getMinutes();
-          // minutes = addZero(minutes);
-          // // if (minutes < 10) {
-          // //   minutes = "0" + minutes;
-          // // }
-          // var hours = now. getHours();
-          // hours = addZero(hours);
-          // if (hours < 10) {
-          //   hours = "0" + hours;
-          // }
+
+
+
+      // var addZero = function(val) {
+      //   if (val < 10) {
+      //     val = "0" + val;
+      //   }
+      //   return val;
+      // }
+
+      // var start;
+      // var timer_id;
+
+      // document.getElementById("start_stop").addEventListener(
+      //   "click",
+      //   function() {
+      //     start  = new Date();
+
+      //     if(this.innerHTML === "START") {
+      //       timer_id = setInterval(goTimer, 10);
+      //       this.innerHTML = ("STOP")
+      //       this.classList.remove("btn-primary")
+      //       this.classList.add("btn-danger")
+      //     } else {
+      //       clearInterval(timer_id);
+      //       this.innerHTML = ("START")
+      //       this.classList.remove("btn-danger");
+      //       this.classList.add("btn-primary")
+      //     }
+      //   });
+
+      $(function(){
+      setInterval(function(goTimer){
+        if(this.innerHTML === "START"){
+          // timer_id = setInterval(goTimer, 10);
+          this.innerHTML = ("STOP")
+          this.classList.remove("btn-primary")
+          this.classList.add("btn-danger")
+        } else {
+          clearInterval(timer_id);
+          this.innerHTML = ("START")
+          this.classList.remove("btn-danger")
+          this.classList.add("btn-primary")
+        }
+    },1000);
+  });
+ 
+
+      //   var goTimer = function() {
+      //     var now =new Date();
+      //     var milli = now.getTime() - start.getTime();
+      //     var seconds = Math.floor(milli / 1000);
+      //     var minutes = Math.floor(seconds / 60);
+      //     var hours = Math.floor(minutes / 60);
+      //     seconds = seconds -minutes * 60;
+      //     minutes = minutes - hours * 60;
+      //     document.getElementById("timer").innerHTML = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+      //   } ;
+
+$(function()) {
+  
+}
+
+
+
     </script>
 </body>
 </html>
